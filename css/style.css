@@ -1,0 +1,196 @@
+/* Telas Pequenas Celular */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    /* Altera o cursor para o estilo de código/seleção do navegador */
+
+    cursor: ew-resize;
+}
+
+/* Garante que botões e links mudem para pointer (mãozinha), mantendo a usabilidade */
+
+a, button, .btn {
+    cursor: cell;
+}
+
+body {
+    background-color: #efe7d4;
+    color: #497372;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 16px;
+    overflow: hidden;  /* Evita barras de rolagem por conta dos computadores caindo */
+    position: relative;  /* Necessário para posicionar os computadores absolutos */
+}
+
+
+/*  Animação dos Computadores caindo*/
+
+.computador-caindo {
+    position: absolute;
+    top: -50px;  /* Começa acima da tela */
+    font-size: 2rem;
+    user-select: none;
+    pointer-events: none; /* Não atrapalha o clique do mouse */
+    animation: queda linear forwards;
+}
+
+/* O segredo da animação: define o início e o fim da queda */
+
+@keyframes queda {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1; /* Aparece suavemente logo após começar a cair */
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh) rotate(360deg); /* Vai até o final da tela e gira */
+        opacity: 0;
+
+    }
+}
+
+.card-container {
+    background-color: #7bb3c4;
+    border-radius: 12px;
+    box-shadow: 0 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;   /*Em mobile, os itens ficam empilhados*/
+    transition: all 0.3s ease;
+}
+
+.card-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.badge {
+    background-color: #7bb3c4;
+    color: #efe7d4;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 4px;
+    width: fit-content;
+    text-transform: uppercase;
+}
+
+.card-content h1 {
+    font-size: 1.25rem;
+    color: #497372;
+    line-height: 1.5;
+}
+
+.card-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.btn {
+    text-decoration: none;
+    padding:10px 16px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+    flex: 1;
+}
+
+.btn.primary {
+    background-color: #efe7d4;
+    color: #497372;
+}
+
+.btn.primary:hover {
+    background-color: #7bb3c4;
+}
+
+.btn.secondary {
+    display: none;
+}
+
+/* Telas Tablets  (min-widht : 600px) */
+
+@media (min-width: 600px) {
+    
+    .card-container {
+        max-width: 650px;
+        flex-direction: row; /* Muda para a linha: imagem ao lado do texto */
+    }
+
+    .card-image {
+        flex: 1;
+    }
+
+    .card-image img {
+        height: 100%; /*Ocupa toda a altura do card*/
+    }
+
+    .card-content {
+        flex: 1;
+        justify-content: center;
+        padding: 30px;
+    }
+
+    .card-content h1 {
+        font-size: 1.4rem;
+    }
+
+    .btn.secondary {
+        display: block;
+        background-color: #efe7d4;
+        color: #497372;
+    }
+
+    .btn.secondary:hover {
+        background-color: #7bb3c4;
+    }
+}
+
+/* Tela Média Nootbook  (min-widht : 920px) */
+
+@media ( min-width: 902px) {
+    
+    .card-container {
+        max-width: 850px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-content {
+        padding: 40px;
+    }
+
+    .card-content h1 {
+        font-size: 1rem;
+    }
+
+    .btn {
+        font-size: 0.95rem;
+        padding: 12px 20px;
+    }
+
+}
